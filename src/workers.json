@@ -538,6 +538,51 @@
     },
     "kind": "typedef"
   },
+  "ByteLengthQueuingStrategy": {
+    "name": "ByteLengthQueuingStrategy",
+    "members": [
+      {
+        "name": "constructor",
+        "type": {
+          "params": [
+            {
+              "name": "init",
+              "type": {
+                "name": "QueuingStrategyInit"
+              }
+            }
+          ]
+        }
+      },
+      {
+        "name": "highWaterMark",
+        "type": {
+          "name": "double"
+        },
+        "readonly": true
+      },
+      {
+        "name": "size",
+        "type": {
+          "params": [
+            {
+              "name": "arg1",
+              "type": {
+                "name": "any",
+                "optional": true
+              }
+            }
+          ],
+          "returns": {
+            "name": "integer",
+            "optional": true
+          }
+        },
+        "readonly": true
+      }
+    ],
+    "kind": "class"
+  },
   "Cache": {
     "name": "Cache",
     "members": [
@@ -922,6 +967,30 @@
     ],
     "kind": "class"
   },
+  "CompressionStream": {
+    "name": "CompressionStream",
+    "members": [
+      {
+        "name": "constructor",
+        "type": {
+          "params": [
+            {
+              "name": "format",
+              "type": {
+                "name": "string"
+              }
+            }
+          ]
+        }
+      }
+    ],
+    "extends": [
+      {
+        "name": "TransformStream"
+      }
+    ],
+    "kind": "class"
+  },
   "Console": {
     "name": "Console",
     "members": [
@@ -1068,6 +1137,51 @@
       }
     ],
     "kind": "struct"
+  },
+  "CountQueuingStrategy": {
+    "name": "CountQueuingStrategy",
+    "members": [
+      {
+        "name": "constructor",
+        "type": {
+          "params": [
+            {
+              "name": "init",
+              "type": {
+                "name": "QueuingStrategyInit"
+              }
+            }
+          ]
+        }
+      },
+      {
+        "name": "highWaterMark",
+        "type": {
+          "name": "double"
+        },
+        "readonly": true
+      },
+      {
+        "name": "size",
+        "type": {
+          "params": [
+            {
+              "name": "arg1",
+              "type": {
+                "name": "any",
+                "optional": true
+              }
+            }
+          ],
+          "returns": {
+            "name": "integer",
+            "optional": true
+          }
+        },
+        "readonly": true
+      }
+    ],
+    "kind": "class"
   },
   "Crypto": {
     "name": "Crypto",
@@ -1621,6 +1735,30 @@
     "extends": [
       {
         "name": "Error"
+      }
+    ],
+    "kind": "class"
+  },
+  "DecompressionStream": {
+    "name": "DecompressionStream",
+    "members": [
+      {
+        "name": "constructor",
+        "type": {
+          "params": [
+            {
+              "name": "format",
+              "type": {
+                "name": "string"
+              }
+            }
+          ]
+        }
+      }
+    ],
+    "extends": [
+      {
+        "name": "TransformStream"
       }
     ],
     "kind": "class"
@@ -4110,7 +4248,7 @@
             {
               "name": "expectedLength",
               "type": {
-                "name": "double"
+                "name": "bigint"
               }
             }
           ]
@@ -6853,6 +6991,18 @@
     ],
     "kind": "class"
   },
+  "QueuingStrategyInit": {
+    "name": "QueuingStrategyInit",
+    "members": [
+      {
+        "name": "highWaterMark",
+        "type": {
+          "name": "double"
+        }
+      }
+    ],
+    "kind": "struct"
+  },
   "ReadResult": {
     "name": "ReadResult",
     "members": [
@@ -7117,7 +7267,7 @@
             "name": "AsyncIterableIterator",
             "args": [
               {
-                "name": "ReadableStreamReadResult"
+                "name": "any"
               }
             ]
           }
@@ -7139,7 +7289,7 @@
             "name": "AsyncIterableIterator",
             "args": [
               {
-                "name": "ReadableStreamReadResult"
+                "name": "any"
               }
             ]
           }
@@ -9063,6 +9213,32 @@
         "readonly": true
       },
       {
+        "name": "ByteLengthQueuingStrategy",
+        "type": {
+          "name": "typeof",
+          "args": [
+            {
+              "name": "ByteLengthQueuingStrategy"
+            }
+          ]
+        },
+        "static": true,
+        "readonly": true
+      },
+      {
+        "name": "CountQueuingStrategy",
+        "type": {
+          "name": "typeof",
+          "args": [
+            {
+              "name": "CountQueuingStrategy"
+            }
+          ]
+        },
+        "static": true,
+        "readonly": true
+      },
+      {
         "name": "ReadableStreamBYOBRequest",
         "type": {
           "name": "typeof",
@@ -9108,6 +9284,32 @@
           "args": [
             {
               "name": "WritableStreamDefaultController"
+            }
+          ]
+        },
+        "static": true,
+        "readonly": true
+      },
+      {
+        "name": "CompressionStream",
+        "type": {
+          "name": "typeof",
+          "args": [
+            {
+              "name": "CompressionStream"
+            }
+          ]
+        },
+        "static": true,
+        "readonly": true
+      },
+      {
+        "name": "DecompressionStream",
+        "type": {
+          "name": "typeof",
+          "args": [
+            {
+              "name": "DecompressionStream"
             }
           ]
         },

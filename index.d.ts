@@ -128,6 +128,12 @@ declare type BodyInit =
  */
 declare type BodyInitializer = BodyInit;
 
+declare class ByteLengthQueuingStrategy {
+  constructor(init: QueuingStrategyInit);
+  readonly highWaterMark: number;
+  size(arg1?: any): number | undefined;
+}
+
 declare abstract class Cache {
   delete(
     request: Request | string,
@@ -187,6 +193,10 @@ interface Comment {
   remove(): Comment;
 }
 
+declare class CompressionStream extends TransformStream {
+  constructor(format: string);
+}
+
 interface Console {
   debug(...data: any[]): void;
   error(...data: any[]): void;
@@ -199,6 +209,12 @@ declare type Content = string | ReadableStream | Response;
 
 interface ContentOptions {
   html?: boolean;
+}
+
+declare class CountQueuingStrategy {
+  constructor(init: QueuingStrategyInit);
+  readonly highWaterMark: number;
+  size(arg1?: any): number | undefined;
 }
 
 declare abstract class Crypto {
@@ -304,6 +320,10 @@ declare class DOMException extends Error {
   static readonly TIMEOUT_ERR: number;
   static readonly INVALID_NODE_TYPE_ERR: number;
   static readonly DATA_CLONE_ERR: number;
+}
+
+declare class DecompressionStream extends TransformStream {
+  constructor(format: string);
 }
 
 declare class DigestStream extends WritableStream {
@@ -601,7 +621,7 @@ interface FileOptions {
 }
 
 declare class FixedLengthStream extends TransformStream {
-  constructor(expectedLength: number);
+  constructor(expectedLength: bigint);
 }
 
 declare class FormData {
@@ -944,6 +964,10 @@ declare abstract class PromiseRejectionEvent extends Event {
   readonly reason: any;
 }
 
+interface QueuingStrategyInit {
+  highWaterMark: number;
+}
+
 interface ReadResult {
   value?: any;
   done: boolean;
@@ -969,12 +993,10 @@ declare class ReadableStream {
   ): ReadableStream;
   pipeTo(destination: WritableStream, options?: PipeToOptions): Promise<void>;
   tee(): [ReadableStream, ReadableStream];
-  values(
-    options?: ReadableStreamValuesOptions
-  ): AsyncIterableIterator<ReadableStreamReadResult>;
+  values(options?: ReadableStreamValuesOptions): AsyncIterableIterator<any>;
   [Symbol.asyncIterator](
     options?: ReadableStreamValuesOptions
-  ): AsyncIterableIterator<ReadableStreamReadResult>;
+  ): AsyncIterableIterator<any>;
 }
 
 declare class ReadableStreamBYOBReader {
